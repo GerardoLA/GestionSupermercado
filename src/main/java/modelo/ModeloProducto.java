@@ -11,12 +11,13 @@ public class ModeloProducto extends Conector {
 	public boolean crearProducto(Producto producto) {
 		conectar();
 		try {
-			pst = getCon().prepareStatement("INSERT INTO productos VALUES ?,?,?,?,?,?");
+			pst = getCon().prepareStatement("INSERT INTO productos(codigo,nombre,cantidad,precio,caducidad) VALUES (?,?,?,?,?)");
 			pst.setString(1, producto.getCodigo());
 			pst.setString(2, producto.getNombre());
 			pst.setInt(3, producto.getCantidad());
 			pst.setDouble(4, producto.getPrecio());
 			pst.setDate(5, new Date(producto.getCaducidad().getTime()));
+			pst.execute();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

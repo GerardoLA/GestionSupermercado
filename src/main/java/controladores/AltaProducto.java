@@ -39,7 +39,6 @@ public class AltaProducto extends HttpServlet {
 		
 		request.getRequestDispatcher("CrearProductoForm.jsp").forward(request, response);
 		
-		;
 
 	}
 
@@ -59,14 +58,14 @@ public class AltaProducto extends HttpServlet {
 		String caducidadString = request.getParameter("caducidad");
 		Date caducidad = null;
 		try {
-			caducidad = new SimpleDateFormat("yyyy-MM-dd").parse(caducidadString);
+			caducidad = new SimpleDateFormat("dd-mm-yyyy").parse(caducidadString);
 
 		} catch (ParseException e) {
 			e.printStackTrace();
 		}
 producto.setCaducidad(caducidad);
 mp.crearProducto(producto);
-request.getRequestDispatcher("VerProductos.jsp").forward(request, response);
+request.getRequestDispatcher("VerProductos").forward(request, response);
 	}
 
 }
