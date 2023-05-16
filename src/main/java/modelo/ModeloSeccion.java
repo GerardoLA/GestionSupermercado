@@ -6,10 +6,13 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 
 public class ModeloSeccion extends Conector {
+	
 	PreparedStatement pst;
-	ArrayList<Seccion>getSecciones(){
+	public ArrayList<Seccion>getSecciones(){
+		
 		ArrayList<Seccion>secciones = new ArrayList<Seccion>();
 		try {
+			conectar();
 			pst = getCon().prepareStatement("SELECT * FROM  secciones");
 			ResultSet rs = pst.executeQuery();
 			while(rs.next()) {
@@ -18,13 +21,13 @@ public class ModeloSeccion extends Conector {
 				seccion.setNombre(rs.getString("nombre"));
 				
 				secciones.add(seccion);
+				
 			}
+			getCon().close();
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		
-		
 		
 		return secciones;
 	}
