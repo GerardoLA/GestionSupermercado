@@ -34,6 +34,7 @@
       				<td scope="row">${producto.cantidad}</td>
       				<td scope="row">${producto.precio}</td>
       				<td scope="row">${producto.caducidad}</td>
+      				<td scope="row">${producto.seccion.nombre }</td>
       				
     			</tr>
     			

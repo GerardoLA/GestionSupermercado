@@ -32,12 +32,23 @@
 			<label>Caducidad: </label>
 			<input type = "date" name ="caducidad"  class="form-control" placeholder = "caducidad"/> <br>
 			<br>
+			<div class="form-group">
+		<h1>seccion</h1>
+			<select class = "form-control id ="seccion" name="id_seccion" required>
+			<option value = "">--Selecciona una seccion</option>
+			<c:forEach items="${secciones }" var = "seccion">
+			<option value="${seccion.id}">${seccion.nombre} <option>
+			</c:forEach>
+			</select>
+			
+	</div>
 		
 			<input type ="submit" value="Crear">
 		</form>
 	
 		<a href="VerProductos" class="btn btn-dark">Volver</a>
 	</div>
+	
 
 
 </body>

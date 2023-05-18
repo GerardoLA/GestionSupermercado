@@ -31,5 +31,26 @@ public class ModeloSeccion extends Conector {
 		
 		return secciones;
 	}
+	public Seccion seccion (int id) {
+		try {
+			conectar();
+			pst = getCon().prepareStatement("Select * from secciones where id =?");
+			pst.setInt(1, id);
+			ResultSet rs = pst.executeQuery();
+			if(rs.next()) {
+				Seccion seccion = new Seccion();
+				seccion.setId(rs.getInt(id));
+				seccion.setNombre(rs.getString("nombre"));
+				return seccion;
+				
+			}		
+			return null;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return null;
+		
+	}
 
 }
