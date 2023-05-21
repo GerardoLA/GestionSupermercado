@@ -11,7 +11,7 @@ public class ModeloProducto extends Conector {
 	public boolean crearProducto(Producto producto) {
 		conectar();
 		try {
-			pst = getCon().prepareStatement("INSERT INTO productos(codigo,nombre,cantidad,precio,caducidad,seccion) VALUES (?,?,?,?,?,?)");
+			pst = getCon().prepareStatement("INSERT INTO productos(codigo,nombre,cantidad,precio,caducidad,id_seccion) VALUES (?,?,?,?,?,?)");
 			pst.setString(1, producto.getCodigo());
 			pst.setString(2, producto.getNombre());
 			pst.setInt(3, producto.getCantidad());
@@ -20,6 +20,7 @@ public class ModeloProducto extends Conector {
 			pst.setInt(6, producto.getSeccion().getId());
 			
 			pst.execute();
+			return true;
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -45,7 +46,7 @@ public class ModeloProducto extends Conector {
 				producto.setCantidad(rs.getInt("cantidad"));
 				producto.setPrecio(rs.getDouble("precio"));
 				producto.setCaducidad(rs.getDate("caducidad"));
-				producto.setSeccion(ms.seccion(rs.getInt("id_seccion")));
+				producto.setSeccion(ms.getSeccion(rs.getInt("id_seccion")));
 				
 				productos.add(producto);
 			}

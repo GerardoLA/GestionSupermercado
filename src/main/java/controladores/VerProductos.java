@@ -1,7 +1,6 @@
 package controladores;
 
 import java.io.IOException;
-import java.sql.SQLException;
 import java.util.ArrayList;
 
 import javax.servlet.ServletException;
@@ -11,7 +10,9 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import modelo.ModeloProducto;
+import modelo.ModeloSeccion;
 import modelo.Producto;
+import modelo.Seccion;
 
 /**
  * Servlet implementation class VerProductos
@@ -39,6 +40,10 @@ public class VerProductos extends HttpServlet {
 		
 		productos = mp.getProductos();
 		request.setAttribute("productos", productos);
+		
+		ArrayList<Seccion>secciones = new ArrayList<Seccion>();
+		ModeloSeccion ms = new ModeloSeccion();
+		secciones = ms.getSecciones();
 		request.getRequestDispatcher("VerProductos.jsp").forward(request, response);
 	}
 	

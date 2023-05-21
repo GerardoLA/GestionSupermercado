@@ -56,7 +56,7 @@ public class AltaProducto extends HttpServlet {
 			throws ServletException, IOException {
 		Producto producto = new Producto();
 		ModeloProducto mp = new ModeloProducto();
-		Seccion seccion =new Seccion();
+		
 		
 		producto.setNombre(request.getParameter("nombre"));
 		producto.setCodigo(request.getParameter("codigo"));
@@ -71,7 +71,8 @@ public class AltaProducto extends HttpServlet {
 			e.printStackTrace();
 		}
 producto.setCaducidad(caducidad);
-producto.setSeccion(seccion);
+ModeloSeccion ms = new ModeloSeccion();
+producto.setSeccion(ms.getSeccion(Integer.parseInt(request.getParameter("id_seccion"))));
 mp.crearProducto(producto);
 request.getRequestDispatcher("VerProductos").forward(request, response);
 	}

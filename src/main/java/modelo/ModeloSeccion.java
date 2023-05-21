@@ -24,33 +24,30 @@ public class ModeloSeccion extends Conector {
 				
 			}
 			getCon().close();
+			return secciones;
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
+			
+			return secciones;
 		}
 		
-		return secciones;
+		
 	}
-	public Seccion seccion (int id) {
+	public Seccion getSeccion (int id) {
+		Seccion seccion = new Seccion();
 		try {
 			conectar();
-			pst = getCon().prepareStatement("Select * from secciones where id =?");
-			pst.setInt(1, id);
+			pst = getCon().prepareStatement("SELECT nombre FROM secciones where id=?");
 			ResultSet rs = pst.executeQuery();
-			if(rs.next()) {
-				Seccion seccion = new Seccion();
-				seccion.setId(rs.getInt(id));
-				seccion.setNombre(rs.getString("nombre"));
-				return seccion;
-				
-			}		
-			return null;
+			rs.next();
+			seccion.setId(rs.getInt("id"));
+			seccion.setNombre(rs.getString("nombre"));
 		} catch (SQLException e) {
-			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return null;
+		
+		return seccion;
 		
 	}
+	
 
 }
