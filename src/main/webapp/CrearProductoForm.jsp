@@ -34,8 +34,8 @@
 			<br>
 			<div class="form-group">
 		<h1>seccion</h1>
-			<select class = "form-control id ="seccion" name="id_seccion" required>
-			<option value = "">--Selecciona una seccion</option>
+			<select  name="id_seccion" required>
+			<option value =0>--Selecciona una seccion</option>
 			<c:forEach items="${secciones }" var = "seccion">
 			<option value="${seccion.id}">${seccion.nombre} <option>
 			</c:forEach>

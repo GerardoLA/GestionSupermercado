@@ -65,7 +65,7 @@ public class AltaProducto extends HttpServlet {
 		String caducidadString = request.getParameter("caducidad");
 		Date caducidad = null;
 		try {
-			caducidad = new SimpleDateFormat("dd-mm-yyyy").parse(caducidadString);
+			caducidad = new SimpleDateFormat("yyyy-MM-dd").parse(caducidadString);
 
 		} catch (ParseException e) {
 			e.printStackTrace();

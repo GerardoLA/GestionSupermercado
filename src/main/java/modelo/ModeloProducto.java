@@ -56,5 +56,20 @@ public class ModeloProducto extends Conector {
 			return productos;	
 		}
 	}
+	
+	public boolean eliminarProducto(int id) {
+		try {
+			conectar();
+			pst = getCon().prepareStatement("DELETE FROM productos WHERE id=?");
+			pst.setInt(1, id);
+			pst.execute();
+			cerrar();
+			return true;
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return false;
+	}
 	}
 
